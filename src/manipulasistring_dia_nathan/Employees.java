@@ -18,7 +18,7 @@ public class Employees {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
-        this.password = password;
+        this.password = BCrypt.hashpw(password, BCrypt.gensalt());
         this.id = id;
     }
     public String getFirstName() {
