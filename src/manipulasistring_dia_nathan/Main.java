@@ -36,7 +36,7 @@ public class Main {
         }
         username=split[0];
         
-        tampung.add(new Employees(firstName, lastName, username, password, 0));
+        tampung.add(new Employees(firstName, lastName, username, password, 1));
         System.out.println("--Data ditambah--");
 
     }

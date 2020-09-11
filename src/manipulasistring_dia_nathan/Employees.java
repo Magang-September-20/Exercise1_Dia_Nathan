@@ -24,6 +24,11 @@ public class Employees {
     public String getFirstName() {
         return firstName;
     }
+    
+    public String generateId(int id){
+        String idPad;
+        return idPad = String.format("%04d" , id);
+    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -63,7 +68,7 @@ public class Employees {
 
     @Override
     public String toString() {
-        return "Id Karyawan :"+id+"\nNama Depan : " + firstName +"\nNama Belakang : " 
+        return "Id Karyawan :"+generateId(id)+"\nNama Depan : " + firstName +"\nNama Belakang : " 
                 + lastName+"\nUsername : " + username+ "\nPass : " + password;
     }
 
