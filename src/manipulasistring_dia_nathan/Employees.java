@@ -7,9 +7,16 @@ package manipulasistring_dia_nathan;
 
 
 /**
- *
- * @author yosef
+ * 
+ * @author Nathan dan Dia
+ * class constructor
+ * @param firstName	Nama Depan yang telah di manipulasi string
+ * @param lastName	Nama Belakang yang telah di manipulasi string
+ * @param username      Username yang telah di manipulasi string
+ * @param password      password yang masih berbentuk inputan dan akan dilakukan hash dengan BCrypt()
+ * @param id            ID yang telah dilakukan increment
  */
+
 public class Employees {
     private String firstName, lastName,username,password;
     private int id;
