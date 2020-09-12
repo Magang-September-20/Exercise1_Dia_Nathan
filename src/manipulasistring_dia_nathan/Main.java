@@ -15,6 +15,7 @@ import java.util.Scanner;
  * @author sweje
  */
 public class Main {
+
     ArrayList<Employees> tampung;
 
     public Main() {
@@ -22,21 +23,33 @@ public class Main {
     }
 
     public void isiData(String namaLengkap, String password) {
+        int id = 1;
 //        manipulasi string disini
-        String lastName="",firstName="", username="";
+        String lastName = "", firstName = "", username = "";
         String[] split = namaLengkap.split(" ");
-        if (split.length <=1){
+        if (split.length <= 1) {
             lastName = split[0];
-            firstName= split[0];
-        }
-        else{
-            lastName=split[split.length-1];
-            String[] removedElement = Arrays.copyOf(split, split.length-1);
+            firstName = split[0];
+        } else {
+            lastName = split[split.length - 1];
+            String[] removedElement = Arrays.copyOf(split, split.length - 1);
             firstName = String.join(" ", removedElement);
         }
-        username=split[0];
-        
-        tampung.add(new Employees(firstName, lastName, username, password, 1));
+
+//        if (username == "") {
+//            username = split[0] + lastName.substring(0, 2);
+//        } else {
+//            System.out.println("lll");
+//        }
+
+//        boolean isExist = username.contains(username);
+//        int a = 2;
+//        if (isExist) {
+//            username = split[0] + split[split.length-a].substring(0,2);
+//            System.out.println("aku disini");
+//            a += 1;
+//        }
+        tampung.add(new Employees(firstName, lastName, username, password, id));
         System.out.println("--Data ditambah--");
 
     }
@@ -53,7 +66,7 @@ public class Main {
 
             for (Employees emp : tampung) {
                 System.out.println(emp);
-               
+
 //                String[] kata = emp.getNamalengkap().split("\\s");
 //                String kata1 = kata[0]; 
 //                String kata2 = kata[1];
@@ -68,7 +81,40 @@ public class Main {
             }
         }
     }
+
+    public void login() {
+        Scanner scanner = new Scanner(System.in);
+        String uName, pas;
+
+        System.out.println("---------------");
+        System.out.print("Username : ");
+        uName = scanner.next();
+        System.out.print("Password : ");
+        pas = scanner.next();
+
+        if (tampung.isEmpty()) {
+            System.out.println("--------------");
+            System.out.println("Data tidak ada");
+            System.out.println("--------------");
+        } else {
+            System.out.println("--------------");
+            System.out.println("Data employees");
+            System.out.println("--------------");
+            
+            for (int i = 0; i < tampung.size(); i++) {
+                if(tampung.get(i).getUsername().equals(uName)){
+                    boolean cekPass = BCrypt.checkpw(pas, tampung.get(i).getPassword());
+                    if(cekPass == true){
+                        System.out.println("LOGIN BERHASIL !!");
+                    } else {
+                        System.out.println("LOGIN GAGAL !!");
+                    }
+                }
+            }
+        }
+    }
 //    MAIN CLASS
+
     public static void main(String[] args) {
         int pilih;
         String namaLengkap = "", pass = "";
@@ -98,11 +144,11 @@ public class Main {
                 tampildata.isiData(namaLengkap, pass);
             } else if (pilih == 2) {
                 tampildata.showData();
+            } else if (pilih == 3) {
+                tampildata.login();
             }
         } while (pilih != 4);
         System.out.println("Program Selesai");
     }
-    
-    
-    
+
 }
