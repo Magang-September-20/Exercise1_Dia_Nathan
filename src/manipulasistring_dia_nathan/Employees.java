@@ -26,8 +26,7 @@ public class Employees {
     }
     
     public String generateId(int id){
-        String idPad;
-        return idPad = String.format("%04d" , id);
+        return String.format("%04d" , id);
     }
 
     public void setFirstName(String firstName) {
