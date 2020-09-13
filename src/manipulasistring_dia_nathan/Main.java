@@ -15,10 +15,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  *
- * @author sweje
+ * @author Dia and Nathan
  */
 public class Main {
-
+/**
+ * Ini merupakan list untuk menyimpan data employees kemudian ditampung dalam variable tampung
+ */
     LinkedList<Employees> tampung;
     private static final AtomicInteger ID = new AtomicInteger(0);
     
@@ -27,8 +29,15 @@ public class Main {
     }
 
     public void isiData(String namaLengkap, String password) {
-//        int id = 1;
-//        manipulasi string disini
+
+//      manipulasi string disini
+/**
+ * Ini merupakan fungsi untuk manipulasi string.
+ * variable nama lengkap akan dipecah menjadi array yang dipisahkan dengan spasi.
+ * jika panjang array split memiliki panjang kurang dari 1 maka nama depan dan nama belakang sama.
+ * jika panjang array split memiliki panjang lebih dari satu maka lastName didapat dari index array terakhir.
+ * lalu firstName didapat dari index array awal ditambah dengan index array berikutnya kemudian digabung dan diberi spasi.
+ */
         String lastName="",firstName="", username="";
         String[] split = namaLengkap.split(" ");
         if (split.length <=1){
@@ -54,7 +63,9 @@ public class Main {
         System.out.println("--Data ditambah--");
 
     }
-
+/**
+ * ini merupakan fungsi untuk menampilkan seluruh data employees yang berada dalam kelas employees
+ */
     public void showData() {
         if (tampung.isEmpty()) {
             System.out.println("--------------");
@@ -71,7 +82,9 @@ public class Main {
             }
         }
     }
-
+/**
+ * fungsi login digunakan untuk pengecekan username dan password yang sudah kita add sebelumnya.
+ */
     public void login() {
         Scanner scanner = new Scanner(System.in);
         String scanUsername, scanPass;
@@ -90,6 +103,11 @@ public class Main {
             System.out.println("--------------");
             System.out.println("Data employees");
             System.out.println("--------------");
+/**
+ * for digunakan untuk memeriksa data yang berada dalam list.
+ * jika username dan password di dalam list sesuai dengan scanUsername dan scanPass yg kita isikan maka akan berhasil, jika berbeda makan akan gagal
+ * dan jika username dan password tidak sama maka akan mencetak data tidak ditemukan.
+ */
             
             for (int i = 0; i < tampung.size(); i++) {
                 if(tampung.get(i).getUsername().equals(scanUsername)){
@@ -98,7 +116,9 @@ public class Main {
                         System.out.println("LOGIN BERHASIL !!");
                     } else {
                         System.out.println("LOGIN GAGAL !!");
-                    }
+                    } 
+                }else{
+                    System.out.println("DATA TIDAK DITEMUKAN!!!");
                 }
             }
         }

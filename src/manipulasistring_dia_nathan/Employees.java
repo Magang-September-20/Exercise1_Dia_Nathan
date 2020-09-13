@@ -71,7 +71,10 @@ public class Employees {
     public void setId(int id) {
         this.id = id;
     }
-
+/**
+ * ini merupakan fungsi untuk menampilkan data employees
+ * @return semua data dari List<Employees>
+ */
     @Override
     public String toString() {
         return "Id Karyawan :"+generateId(id)+"\nNama Depan : " + firstName +"\nNama Belakang : " 
